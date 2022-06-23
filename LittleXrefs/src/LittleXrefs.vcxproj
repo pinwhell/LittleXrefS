@@ -95,23 +95,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)LittleXrefs\src\Dependencies\JSONCPP\include;$(SolutionDir)LittleXrefs\src\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\josua\Downloads\capstone-4.0.2-win32\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Dependencies\JSONCPP\include;$(ProjectDir)\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Dependencies\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)LittleXrefs\src\Dependencies\JSONCPP\include;$(SolutionDir)LittleXrefs\src\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\josua\Downloads\capstone-4.0.2-win32\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Dependencies\JSONCPP\include;$(ProjectDir)\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Dependencies\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)LittleXrefs\src\Dependencies\JSONCPP\include;$(SolutionDir)LittleXrefs\src\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\josua\Downloads\capstone-4.0.2-win32\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Dependencies\JSONCPP\include;$(ProjectDir)\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Dependencies\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)LittleXrefs\src\Dependencies\JSONCPP\include;$(SolutionDir)LittleXrefs\src\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\josua\Downloads\capstone-4.0.2-win32\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Dependencies\JSONCPP\include;$(ProjectDir)\Dependencies\capstone-4.0.2-win32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Dependencies\capstone-4.0.2-win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
