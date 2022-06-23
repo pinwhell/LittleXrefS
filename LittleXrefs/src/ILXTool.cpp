@@ -2,6 +2,8 @@
 #include "Function.h"
 #include "ReferenceEngine.h"
 #include "FunctionReferenceList.h"
+#include <iostream>
+#include <conio.h>
 
 void ILXARMTool::ParseAllFunction()
 {
@@ -81,4 +83,24 @@ void ILXTool::AddFunction(const std::string& name, const std::string& signature,
 csh ILXTool::GetCapstoneHandle()
 {
     return m_CapstoneDisasm;
+}
+
+void ILXTool::Run()
+{
+    while (true)
+    {
+        system("cls");
+        FunctionReferenceList funcRefsLists;
+        std::string typeName = "";
+        uintptr_t offset = 0;
+
+        std::cout << "Input Type Name: "; std::cin >> typeName;
+        std::cout << "Input Offset: "; std::cin >> std::hex >> offset;
+
+        system("cls");
+
+        FindReferences(typeName, offset, funcRefsLists);
+        funcRefsLists.Print();
+        system("pause");
+    }
 }

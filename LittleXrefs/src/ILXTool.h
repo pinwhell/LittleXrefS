@@ -27,6 +27,7 @@ public:
 	const std::vector<Function*>& getAllFunctions() const;
 	void AddFunction(const std::string& name, const std::string& signature, uintptr_t offset);
 	csh GetCapstoneHandle();
+	void Run();
 };
 
 class ILXARMTool : public ILXTool {

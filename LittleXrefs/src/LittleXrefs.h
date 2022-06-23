@@ -3,6 +3,8 @@
 #include <json\json.h>
 #include <fstream>
 
+#define ASK_FILES
+
 namespace LX{
 
 	#define LXFILE_MODE_IN std::ios::in

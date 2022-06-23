@@ -11,8 +11,5 @@ int main()
 
 	ILXTool* pIlxTool = new ILXARMTool(LX::g_pLXrefs);
 
-	FunctionReferenceList funcRefsLists;
-	pIlxTool->FindReferences("PlayerControl", 0x28, funcRefsLists);
-	funcRefsLists.Print();
-	
+	pIlxTool->Run();
 }
