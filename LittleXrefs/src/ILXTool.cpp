@@ -5,7 +5,7 @@
 #include <iostream>
 #include <conio.h>
 
-void LXARMTool::ParseAllFunction()
+void ILXTool::ParseAllFunction()
 {
     auto& allFuncJson = getLittleXrefS()->getDumpJsonObj()["ScriptMethod"];
 
@@ -21,7 +21,6 @@ LXARMTool::LXARMTool(LittleXrefs* pLXRefs)
     : ILXTool(pLXRefs, CS_ARCH_ARM, CS_MODE_ARM)
 {
     RefsEngine = new ArmReferenceEngine(GetCapstoneHandle());
-    ParseAllFunction();
 }
 
 LXARMTool::~LXARMTool()
@@ -42,10 +41,20 @@ ILXTool::ILXTool(LittleXrefs* _pLXRefs, cs_arch arch, cs_mode archMode)
 
         throw "Failed enabling Detailed Options";
     }
+
+    ParseAllFunction();
 }
 
 ILXTool::~ILXTool()
 {
+    for (Function* pFunc : allFunctions)
+    {
+        if (pFunc)
+            delete pFunc;
+    }
+
+    if (m_CapstoneDisasm)
+        cs_close(&m_CapstoneDisasm);
 }
 
 void ILXTool::FindReferences(const std::string& className, uint64_t offset, FunctionReferenceList& ppOutReferenceList)

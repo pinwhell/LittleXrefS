@@ -13,9 +13,11 @@ struct ReferenceEngine;
 
 class ILXTool
 {
+private:
 	csh	m_CapstoneDisasm;
 	LittleXrefs* pLXRefs;
 	std::vector<Function*> allFunctions;
+	void ParseAllFunction();
 protected:
 	ReferenceEngine* RefsEngine;
 public:
@@ -31,8 +33,6 @@ public:
 };
 
 class LXARMTool : public ILXTool {
-private:
-	void ParseAllFunction();
 public:
 	LXARMTool(LittleXrefs* pLXRefs);
 	~LXARMTool();
