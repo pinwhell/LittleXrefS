@@ -1,19 +1,15 @@
-#include "ReferenceEngine.h"
+#include "IReferenceEngine.h"
 #include "FunctionReferenceList.h"
 #include "Function.h"
 #include "CapstoneHelper.h"
 
-ReferenceEngine::ReferenceEngine(csh _CapstoneDisasm)
+IReferenceEngine::IReferenceEngine(csh _CapstoneDisasm, uint16_t _abiRegBase)
 	: CapstoneHandle(_CapstoneDisasm)
+	, abiRegBase(_abiRegBase)
 {
 }
 
-ArmReferenceEngine::ArmReferenceEngine(csh CapstoneDisasm)
-	:ReferenceEngine(CapstoneDisasm)
-{
-}
-
-void ArmReferenceEngine::FindRefereces(Function* pFunc, const std::string& typeName, uint64_t offset, FunctionReferenceList& outRefsLists)
+void IReferenceEngine::FindRefereces(Function* pFunc, const std::string& typeName, uint64_t offset, FunctionReferenceList& outRefsLists)
 {
 	std::vector<uint16_t> matchingTypenameParamsId;
 
@@ -27,12 +23,18 @@ void ArmReferenceEngine::FindRefereces(Function* pFunc, const std::string& typeN
 			cs_insn* pDisasmdInstEnd = pDisasmdInst + count;
 
 			for (uint16_t currParamId : matchingTypenameParamsId)
-				FindRefereces(pFunc, pDisasmdInst, pDisasmdInstEnd, (uint16_t)(arm_reg::ARM_REG_R0 + currParamId), offset, outRefsLists);
+				FindRefereces(pFunc, pDisasmdInst, pDisasmdInstEnd, (uint16_t)(abiRegBase + currParamId), offset, outRefsLists);
 
 			cs_free(pDisasmdInst, count);
 		}
 	}
 }
+
+ArmReferenceEngine::ArmReferenceEngine(csh CapstoneDisasm)
+	: IReferenceEngine(CapstoneDisasm, ARM_REG_R0)
+{
+}
+//arm_reg::ARM_REG_R0
 
 void ArmReferenceEngine::FindRefereces(Function* pFunc, cs_insn* pStart, cs_insn* pEnd, uint16_t trackReg, uint64_t offset, FunctionReferenceList& outRefsLists)
 {
@@ -100,9 +102,13 @@ END_FIND:
 	return;
 }
 
-void ArmReferenceEngine::FindRefereces(unsigned char* pEntry, uint16_t trackReg, uint64_t offset, FunctionReferenceList& outRefsLists)
+Arm64ReferenceEngine::Arm64ReferenceEngine(csh CapstoneDisasm)
+	: IReferenceEngine(CapstoneDisasm, ARM64_REG_X0)
 {
-	
-	
-	
+
+}
+
+void Arm64ReferenceEngine::FindRefereces(Function* pFunc, cs_insn* pStart, cs_insn* pEnd, uint16_t trackReg, uint64_t offset, FunctionReferenceList& outRefsLists)
+{
+
 }

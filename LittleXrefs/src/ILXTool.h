@@ -9,7 +9,7 @@ using namespace LX;
 
 struct FunctionReferenceList;
 struct Function;
-struct ReferenceEngine;
+struct IReferenceEngine;
 
 class ILXTool
 {
@@ -19,7 +19,7 @@ private:
 	std::vector<Function*> allFunctions;
 	void ParseAllFunction();
 protected:
-	ReferenceEngine* RefsEngine;
+	IReferenceEngine* RefsEngine;
 public:
 	ILXTool(LittleXrefs* _pLXRefs, cs_arch arch, cs_mode archMode);
 	~ILXTool();
@@ -37,4 +37,11 @@ public:
 	LXARMTool(LittleXrefs* pLXRefs);
 	~LXARMTool();
 };
+
+class LXARM64Tool : public ILXTool {
+public:
+	LXARM64Tool(LittleXrefs* pLXRefs);
+	~LXARM64Tool();
+};
+
 

@@ -27,7 +27,7 @@
     <ClInclude Include="LittleXrefs.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Reference.h" />
-    <ClInclude Include="ReferenceEngine.h" />
+    <ClInclude Include="IReferenceEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CapstoneHelper.cpp" />
@@ -39,7 +39,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Reference.cpp" />
-    <ClCompile Include="ReferenceEngine.cpp" />
+    <ClCompile Include="IReferenceEngine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

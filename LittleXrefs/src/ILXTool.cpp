@@ -1,6 +1,6 @@
 #include "ILXTool.h"
 #include "Function.h"
-#include "ReferenceEngine.h"
+#include "IReferenceEngine.h"
 #include "FunctionReferenceList.h"
 #include <iostream>
 #include <conio.h>
@@ -110,6 +110,12 @@ void ILXTool::Run()
 
         FindReferences(typeName, offset, funcRefsLists);
         funcRefsLists.Print();
-        system("pause");
+        _getch();
     }
+}
+
+LXARM64Tool::LXARM64Tool(LittleXrefs* pLXRefs)
+    : ILXTool(pLXRefs, CS_ARCH_ARM64, CS_MODE_ARM)
+{
+    RefsEngine = new Arm64ReferenceEngine(GetCapstoneHandle());
 }

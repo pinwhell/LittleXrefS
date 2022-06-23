@@ -36,7 +36,7 @@
     <ClInclude Include="Parameter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReferenceEngine.h">
+    <ClInclude Include="IReferenceEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CapstoneHelper.h">
@@ -68,7 +68,7 @@
     <ClCompile Include="Parameter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ReferenceEngine.cpp">
+    <ClCompile Include="IReferenceEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CapstoneHelper.cpp">
