@@ -30,11 +30,11 @@ public:
 	void Run();
 };
 
-class ILXARMTool : public ILXTool {
+class LXARMTool : public ILXTool {
 private:
 	void ParseAllFunction();
 public:
-	ILXARMTool(LittleXrefs* pLXRefs);
-	~ILXARMTool();
+	LXARMTool(LittleXrefs* pLXRefs);
+	~LXARMTool();
 };
 

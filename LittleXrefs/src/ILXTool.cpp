@@ -5,7 +5,7 @@
 #include <iostream>
 #include <conio.h>
 
-void ILXARMTool::ParseAllFunction()
+void LXARMTool::ParseAllFunction()
 {
     auto& allFuncJson = getLittleXrefS()->getDumpJsonObj()["ScriptMethod"];
 
@@ -17,14 +17,14 @@ void ILXARMTool::ParseAllFunction()
     }
 }
 
-ILXARMTool::ILXARMTool(LittleXrefs* pLXRefs)
+LXARMTool::LXARMTool(LittleXrefs* pLXRefs)
     : ILXTool(pLXRefs, CS_ARCH_ARM, CS_MODE_ARM)
 {
     RefsEngine = new ArmReferenceEngine(GetCapstoneHandle());
     ParseAllFunction();
 }
 
-ILXARMTool::~ILXARMTool()
+LXARMTool::~LXARMTool()
 {
 }
 

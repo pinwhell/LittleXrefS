@@ -9,7 +9,7 @@ int main()
 		exit(1);
 	}
 
-	ILXTool* pIlxTool = new ILXARMTool(LX::g_pLXrefs);
+	ILXTool* pIlxTool = new LXARMTool(LX::g_pLXrefs);
 
 	pIlxTool->Run();
 }
