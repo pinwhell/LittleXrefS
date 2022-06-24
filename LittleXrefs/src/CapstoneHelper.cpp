@@ -39,3 +39,21 @@ bool ArmCapstoneHelper::HeuristicReturn(cs_insn* pInst)
 
     return false;
 }
+
+uint16_t Arm64CapstoneHelper::GetLValueRegType(cs_insn* pInst)
+{
+    return pInst->detail->arm64.operands[0].reg;
+}
+
+uint16_t Arm64CapstoneHelper::GetRValueRegType(cs_insn* pInst)
+{
+    return pInst->detail->arm64.operands[1].reg;
+}
+
+bool Arm64CapstoneHelper::HeuristicReturn(cs_insn* pInst)
+{
+    if (pInst->id == ARM64_INS_RET)
+        return true;
+
+    return false;
+}

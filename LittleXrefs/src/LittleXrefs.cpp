@@ -30,8 +30,8 @@ bool LX::LittleXrefs::LoadFiles()
 	if (!Utils::get_assembly_path(assemblyFilePath) || !Utils::get_script_path(scriptDumpFilePath))
 		return false;
 #else 
-	assemblyFilePath = L"samples/libil2cpp.so";
-	scriptDumpFilePath = L"samples/script.json";
+	assemblyFilePath = L"libil2cpp.so";
+	scriptDumpFilePath = L"script.json";
 #endif
 
 

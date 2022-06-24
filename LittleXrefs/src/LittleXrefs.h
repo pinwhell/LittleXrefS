@@ -3,7 +3,7 @@
 #include <json\json.h>
 #include <fstream>
 
-#define ASK_FILES
+//#define ASK_FILES
 
 namespace LX{
 
