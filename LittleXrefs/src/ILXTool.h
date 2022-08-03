@@ -4,6 +4,7 @@
 #include <string>
 #include <capstone\capstone.h>
 #include "LittleXrefs.h"
+#include "CapstoneManager.h"
 
 using namespace LX;
 
@@ -14,10 +15,10 @@ struct IReferenceEngine;
 class ILXTool
 {
 private:
-	csh	m_CapstoneDisasm;
+	CapstoneManager* pCapstoneManager;
 	LittleXrefs* pLXRefs;
 	std::vector<Function*> allFunctions;
-	void ParseAllFunction();
+	bool bAllFuncParsed;
 protected:
 	IReferenceEngine* RefsEngine;
 public:
@@ -25,11 +26,17 @@ public:
 	~ILXTool();
 
 	void FindReferences(const std::string& className, uint64_t offset, FunctionReferenceList& ppOutReferenceList);
+	void FindReferences(uint64_t offset, FunctionReferenceList& ppOutReferenceList);
+	void FindClazzRefs(uint64_t offset, FunctionReferenceList& ppOutReferenceList);
+	void FindClazzRefs(uint64_t offset, uint64_t clazzOff, FunctionReferenceList& ppOutReferenceList);
 	LittleXrefs* getLittleXrefS();
+	bool getFunctionAtOffset(uintptr_t offset, Function** pFunc);
 	const std::vector<Function*>& getAllFunctions() const;
-	void AddFunction(const std::string& name, const std::string& signature, uintptr_t offset);
-	csh GetCapstoneHandle();
+	void AddFunction(const std::string& name, const std::string& signature, uintptr_t offset, Function** pOutFunc = nullptr);
+	CapstoneManager* GetCapstoneManager();
 	void Run();
+	IReferenceEngine* getRefsEngine();
+	void ParseAllFunction();
 };
 
 class LXARMTool : public ILXTool {

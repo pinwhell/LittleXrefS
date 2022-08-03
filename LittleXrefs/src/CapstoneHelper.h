@@ -18,6 +18,7 @@ public:
 	static uint16_t GetRValueRegType(cs_insn* pInst);
 	static bool RegisterPresent(cs_insn* pInst, uint16_t reg);
 	static bool HeuristicReturn(cs_insn* pInst);
+	static bool IsADRP(uintptr_t inst);
 };
 
 

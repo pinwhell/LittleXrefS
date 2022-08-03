@@ -3,7 +3,7 @@
 #include <json\json.h>
 #include <fstream>
 
-//#define ASK_FILES
+#define ASK_FILES
 
 namespace LX{
 
@@ -36,6 +36,7 @@ namespace LX{
 	class LittleXrefs {
 	private:
 		unsigned char*	m_AssemblyBuffEntry;
+		uintptr_t		m_AssemblyBuffSize;
 		Json::Value		m_ScriptJsonObj;
 		LXARCH			m_Arch;
 		LXFILEFORMAT	m_ExecFileFormat;
@@ -46,6 +47,7 @@ namespace LX{
 		bool LoadFiles();
 		Json::Value&	getDumpJsonObj();
 		unsigned char*	getAssemblyEntry();
+		uintptr_t getAssemblySize();
 	};
 
 	namespace Utils {

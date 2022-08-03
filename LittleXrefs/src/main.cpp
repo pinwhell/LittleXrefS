@@ -1,5 +1,12 @@
 #include "ILXTool.h"
 #include "FunctionReferenceList.h"
+#include "Function.h"
+#include <iostream>
+#include "IReferenceEngine.h"
+#include "Function.h"
+#include "CapstoneHelper.h"
+#include <capstone/capstone.h>
+
 
 int main()
 {
@@ -11,5 +18,6 @@ int main()
 
 	ILXTool* pIlxTool = new LXARM64Tool(LX::g_pLXrefs);
 
+	pIlxTool->ParseAllFunction();
 	pIlxTool->Run();
 }

@@ -52,14 +52,14 @@ bool LX::LittleXrefs::LoadFiles()
 		return false;
 
 	// allocating memory for reading raw files
-	assemblyFileRawBuff = new char[assemblyFileSize];
+	assemblyFileRawBuff = (char*)_aligned_malloc(assemblyFileSize, 4096);
 	scriptDumpFileRawBuff = new char[scriptDumpFileSize];
 
 	// handle invalid buffers allocation
 	if (!assemblyFileRawBuff || !scriptDumpFileRawBuff)
 	{
 		if (assemblyFileRawBuff)
-			delete[] assemblyFileRawBuff;
+			_aligned_free( assemblyFileRawBuff);
 
 		if (scriptDumpFileRawBuff)
 			delete[] scriptDumpFileRawBuff;
@@ -70,7 +70,7 @@ bool LX::LittleXrefs::LoadFiles()
 	//reading raw files to buffers and handling read errors
 	if (!assemblyFile.ReadFile(assemblyFileRawBuff, assemblyFileSize) || !scriptDumpFile.ReadFile(scriptDumpFileRawBuff, scriptDumpFileSize))
 	{
-		delete[] assemblyFileRawBuff;
+		_aligned_free(assemblyFileRawBuff);
 		delete[] scriptDumpFileRawBuff;
 
 		return false;
@@ -78,11 +78,12 @@ bool LX::LittleXrefs::LoadFiles()
 
 	//assigning results
 	m_AssemblyBuffEntry = (unsigned char*)assemblyFileRawBuff;
+	m_AssemblyBuffSize = assemblyFileSize;
 
 	//parse json cstr to json object  and handle errors
 	if (!Utils::cstr_to_json_obj(scriptDumpFileRawBuff, m_ScriptJsonObj))
 	{
-		delete[] assemblyFileRawBuff;
+		_aligned_free(assemblyFileRawBuff);
 		delete[] scriptDumpFileRawBuff;
 
 		return false;
@@ -102,6 +103,11 @@ Json::Value& LX::LittleXrefs::getDumpJsonObj()
 unsigned char* LX::LittleXrefs::getAssemblyEntry()
 {
 	return m_AssemblyBuffEntry;
+}
+
+uintptr_t LX::LittleXrefs::getAssemblySize()
+{
+	return m_AssemblyBuffSize;
 }
 
 LX::LittleXrefs::LittleXrefs()

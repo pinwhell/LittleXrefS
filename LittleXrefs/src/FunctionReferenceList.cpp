@@ -26,6 +26,8 @@ void FunctionReferenceList::Print()
 
 void FunctionReferenceList::AddReference(Function* pFunc, cs_insn* pCurrInst, char accessMode)
 {
+	std::lock_guard<std::mutex> lck(addMtx);
+
 	Reference ref;
 
 	ref.AccessMode = accessMode;

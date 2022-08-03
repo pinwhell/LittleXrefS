@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <mutex>
 
 struct Reference;
 struct Function;
@@ -12,6 +13,7 @@ struct FunctionReferenceList
 {
 private:
 	std::unordered_map<Function*, std::vector<Reference>> RefsLists;
+	std::mutex addMtx;
 
 public:
 	FunctionReferenceList();

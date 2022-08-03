@@ -33,6 +33,7 @@ Function::Function(const std::string& _name, const std::string& _signature, unsi
     , signature(_signature)
     , entryOffset(offset)
     , entryMem(currMemOff)
+    , pSeudoSize(TO_ANALIZE_MAX_FUNC_SZ)
 {
     ParseParameters();
 }
@@ -56,6 +57,24 @@ bool Function::getMatchingTypenameParamsId(const std::string& typeName, std::vec
         if (param.type == typeName) outParamsId.push_back(param.id);
 
     return outParamsId.size() != 0;
+}
+
+void Function::OnNextCreated(Function* pNext)
+{
+    pSeudoSize = pNext->entryOffset - entryOffset;
+
+    if (pSeudoSize > TO_ANALIZE_MAX_FUNC_SZ) 
+        pSeudoSize = TO_ANALIZE_MAX_FUNC_SZ;
+}
+
+bool Function::OffsetAtBody(uintptr_t offset)
+{
+    return IN_RANGE(entryOffset, offset, entryOffset + pSeudoSize);
+}
+
+bool Function::OffsetAtBody(unsigned char* offset)
+{
+    return IN_RANGE(entryMem, offset, entryMem + pSeudoSize);;
 }
 
 void IgnoreTillChar(const char** pCurr, char stopAt, const char* limit = nullptr)

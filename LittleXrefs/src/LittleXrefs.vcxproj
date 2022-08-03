@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapstoneHelper.h" />
+    <ClInclude Include="CapstoneManager.h" />
     <ClInclude Include="ELF.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="FunctionReferenceList.h" />
@@ -28,9 +29,11 @@
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Reference.h" />
     <ClInclude Include="IReferenceEngine.h" />
+    <ClInclude Include="ThreadPool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CapstoneHelper.cpp" />
+    <ClCompile Include="CapstoneManager.cpp" />
     <ClCompile Include="Dependencies\JSONCPP\dist\jsoncpp.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="FunctionReferenceList.cpp" />
@@ -155,6 +158,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);CAPSTONE_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -174,6 +178,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);CAPSTONE_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

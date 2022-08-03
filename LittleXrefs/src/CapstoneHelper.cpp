@@ -57,3 +57,8 @@ bool Arm64CapstoneHelper::HeuristicReturn(cs_insn* pInst)
 
     return false;
 }
+
+bool Arm64CapstoneHelper::IsADRP(uintptr_t inst)
+{
+    return ( inst & 0x9F000000 ) == 0x90000000;
+}
